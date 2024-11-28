@@ -33,7 +33,10 @@ public class Game {
         System.out.println("Color: " + selectedColor);
         System.out.println("Name: " + petName);
 
+        
+
         // Placeholder for next steps
         System.out.println("\nGame starting... (next steps will be implemented soon!)");
+
     }
 }
