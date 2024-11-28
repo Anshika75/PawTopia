@@ -33,12 +33,12 @@ public enum PetType {
                 case 2 -> selectedPet = PetType.CAT;
                 case 3 -> selectedPet = PetType.BIRD;
                 default -> {
-                    System.out.println("Invalid choice, defaulting to Dog.\n");
+                    System.out.println("\nInvalid choice, defaulting to Dog.");
                     selectedPet = PetType.DOG;
                 }
             }
         } catch (Exception e) {
-            System.out.println("Invalid input! Defaulting to Dog.\n");
+            System.out.println("\nInvalid input! Defaulting to Dog.");
             selectedPet = PetType.DOG;
         }
 
