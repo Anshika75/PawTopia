@@ -5,8 +5,8 @@ public class AsciiArt {
         String welcomeArt = """
               Welcome to PawTopia!
                     /\\_/\\  
-                    ( o.o ) 
-                     > ^ <  
+                   ( o.o ) 
+                    > ^ <  
                   
               Get ready to build your perfect pet world.!
               """;
