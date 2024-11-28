@@ -4,6 +4,7 @@ import com.virtualpet.asciiart.AsciiArt;
 import com.virtualpet.pet.PetType;
 import com.virtualpet.pet.PetBreed;
 import com.virtualpet.pet.PetColor;
+import com.virtualpet.pet.PetName;
 
 public class Game {
     public static void main(String[] args) {
@@ -21,6 +22,16 @@ public class Game {
         // Prompt user to select a color
         String selectedColor = PetColor.chooseColor(selectedPet, selectedBreed);
         System.out.println("\nYou chose the color: " + selectedColor + ".");
+
+        // Prompt user to set name
+        String petName = PetName.namePet();
+
+        // Display pet details
+        System.out.println("\nYour pet details:");
+        System.out.println("Type: " + selectedPet.name());
+        System.out.println("Breed: " + selectedBreed);
+        System.out.println("Color: " + selectedColor);
+        System.out.println("Name: " + petName);
 
         // Placeholder for next steps
         System.out.println("\nGame starting... (next steps will be implemented soon!)");
