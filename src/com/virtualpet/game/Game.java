@@ -2,15 +2,22 @@ package com.virtualpet.game;
 
 import com.virtualpet.asciiart.AsciiArt;
 import com.virtualpet.pet.PetType;
+import com.virtualpet.pet.PetBreed;
 
 public class Game {
     public static void main(String[] args) {
         // Display welcome message and ASCII art
         AsciiArt.printWelcomeArt();
-        
+
+        // Prompt for user to select a pet
         PetType selectedPet = PetType.choosePet();
-        System.out.println("You chose a " + selectedPet.name() + "!");
+        System.out.println("\nYou chose a " + selectedPet.name() + "!");
+
+        // Prompt user to select a pet breed
+        String selectedBreed = PetBreed.chooseBreed(selectedPet);
+        System.out.println("\nYou chose the breed: " + selectedBreed + ".");
+
         // Placeholder for next steps
-        System.out.println("Game starting... (next steps will be implemented soon!)");
+        System.out.println("\nGame starting... (next steps will be implemented soon!)");
     }
 }

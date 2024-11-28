@@ -19,11 +19,11 @@ public class PetBreed {
         Scanner scanner = new Scanner(System.in);
         List<String> availableBreeds = getBreeds(petType);
 
-        System.out.println("Choose a breed for your " + petType.name() + ":");
+        System.out.println("Choose a breed for your " + petType.name() + ":\n");
         for (int i = 0; i < availableBreeds.size(); i++) {
             System.out.println((i + 1) + ". " + availableBreeds.get(i));
         }
-        System.out.print("Enter your choice: ");
+        System.out.print("\nEnter your choice:\n\n");
 
         String selectedBreed = availableBreeds.get(0); // Default to the first breed
         try {
@@ -31,10 +31,10 @@ public class PetBreed {
             if (choice >= 1 && choice <= availableBreeds.size()) {
                 selectedBreed = availableBreeds.get(choice - 1);
             } else {
-                System.out.println("Invalid choice, defaulting to " + selectedBreed + ".");
+                System.out.println("Invalid choice, defaulting to " + selectedBreed + ".\n");
             }
         } catch (Exception e) {
-            System.out.println("Invalid input! Defaulting to " + selectedBreed + ".");
+            System.out.println("Invalid input! Defaulting to " + selectedBreed + ".\n");
         }
 
         return selectedBreed;

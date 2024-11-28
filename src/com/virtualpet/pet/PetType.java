@@ -14,9 +14,11 @@ public enum PetType {
 
         String PetTypeTxt = """
                 Choose a pet to start with:
+
                 1. Dog
                 2. Cat
                 3. Bird
+
                 Enter your choice (1/2/3):
                 """;    
 
@@ -31,12 +33,12 @@ public enum PetType {
                 case 2 -> selectedPet = PetType.CAT;
                 case 3 -> selectedPet = PetType.BIRD;
                 default -> {
-                    System.out.println("Invalid choice, defaulting to Dog.");
+                    System.out.println("Invalid choice, defaulting to Dog.\n");
                     selectedPet = PetType.DOG;
                 }
             }
         } catch (Exception e) {
-            System.out.println("Invalid input! Defaulting to Dog.");
+            System.out.println("Invalid input! Defaulting to Dog.\n");
             selectedPet = PetType.DOG;
         }
 
