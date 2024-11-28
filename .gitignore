@@ -1,0 +1,18 @@
+# Ignore the bin directory where compiled classes are stored
+bin/
+
+# Ignore the lib directory if it contains external libraries that can be downloaded
+lib/
+
+# Ignore IDE-specific files
+.vscode/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore build artifacts
+*.class
