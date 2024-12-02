@@ -1,6 +1,7 @@
 package com.virtualpet.pet;
 
 import com.virtualpet.activity.Activity;
+import com.virtualpet.asciiart.PetArt;
 import com.virtualpet.shop.Shop;
 
 public class Pet {
@@ -43,21 +44,19 @@ public class Pet {
             System.out.println("Activity cannot proceed. Resolve the warnings first!");
             return; // Exit without performing the activity
         }
-
         boolean itemAvailable = Shop.useItemForActivity(this, activity.name(), activity);
-        
+
         while (!itemAvailable) {
             System.out.println("Redirecting to the shop...");
             Shop.purchaseItems(this);
-    
+
             itemAvailable = Shop.useItemForActivity(this, activity.name(), activity);
-    
+
             if (!itemAvailable) {
                 System.out.println("Item for the activity is still unavailable. Please purchase the required item.");
                 break;
             }
         }
-    
 
         if (itemAvailable) {
             // Apply activity effects only if item is available
@@ -71,6 +70,7 @@ public class Pet {
         } else {
             System.out.println("Activity cannot be performed due to missing items.");
         }
+        PetArt.printPetArt(petType, name, activity.name());
     }
 
     public void displayMetrics() {

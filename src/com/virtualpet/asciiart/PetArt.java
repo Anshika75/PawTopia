@@ -75,7 +75,7 @@ public class PetArt {
     // ASCII art for Cat
     private static void printCatArt(String petName, String activity) {
         switch (activity) {
-            case "SLEEPING":
+            case "SLEEP":
                 System.out.println("""
                        |\\      _,,---,,_
                   ZZZzz /,`.-'`'    -.  ;-;;,_  
@@ -98,21 +98,21 @@ public class PetArt {
                 break;
             case "BATHING":
                 System.out.println("""
-                      |\\
-                     /  \\___
-                    (      o)
-                    \\_____/\\_
-                       || ||
-                    Purr...lick, lick!
-                    %s is grooming itself.
+                        /\\_/\\
+                       ( o.o )  
+                       (  =  ) 
+                       /   | \\
+                      (____|__)
+
+                    Splish splash! %s is taking a bath.
                 """.formatted(petName));
                 break;
             case "PLAYING":
                 System.out.println("""
-                          /\\_/\\
+                           /\\_/\\
                           ( o.o )
                            > ^ <  
-                         //     \\     
+                          /     \\     
                          (       )
                           `-----'
 
