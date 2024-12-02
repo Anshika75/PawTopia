@@ -15,20 +15,21 @@ public class Shop {
         int price;
         boolean isBought;
         int itemLife;
-        Activity[] activities;  // Link item to multiple activities
+        int initialItemLife; // Keep track of the initial item life
+        Activity[] activities; // Link item to multiple activities
 
         Item(String name, int price, int itemLife, Activity[] activities) {
             this.name = name;
             this.price = price;
             this.isBought = false;
             this.itemLife = itemLife;
+            this.initialItemLife = itemLife; // Store initial item life
             this.activities = activities;
         }
 
-        // Mark the item as bought and reset its life
+        // Mark the item as bought and reset its life to its initial value
         public void buyItem() {
             this.isBought = true;
-            this.itemLife = 1;  // Reset item life when bought
         }
 
         // Reduce item life after use
@@ -41,8 +42,8 @@ public class Shop {
         // Reset item if its life is over
         public void resetItem() {
             if (itemLife <= 0) {
-                this.isBought = false;
-                this.itemLife = 0;
+                this.isBought = false; // Mark item as available again
+                this.itemLife = initialItemLife; // Restore original item life
             }
         }
 
@@ -52,41 +53,47 @@ public class Shop {
             for (Activity activity : activities) {
                 activitiesList.append(activity).append(" ");
             }
-            return name + " - $" + price + (isBought ? " (Bought)" : " (Available)") +
-                    (isBought ? " - Life: " + itemLife : "") + " - Activities: " + activitiesList;
-        }
+            return name + " - Price: $" + price + " | Associated Activity: " + activitiesList + " | Item Life: " + itemLife +  " | Status: " + (isBought ? " Bought" : " Available");
+         }
     }
 
     private static final Map<PetType, Item[]> shopItems = new HashMap<>();
 
     static {
         shopItems.put(PetType.DOG, new Item[] {
-            new Item("Kennel", 200, 5, new Activity[]{Activity.SLEEP}),
-            new Item("Food Bowl", 50, 10, new Activity[]{Activity.EATING}),
-            new Item("Bone", 25, 15, new Activity[]{Activity.EATING}),
-            new Item("Ball", 20, 20, new Activity[]{Activity.PLAYING}),
-            new Item("Chew Toy", 30, 10, new Activity[]{Activity.PLAYING}),
-            new Item("Fur Brush", 30, 15, new Activity[]{Activity.BATHING}),
-            new Item("Bath Tub", 150, 6, new Activity[]{Activity.BATHING}),
-            new Item("Dog Bed", 100, 8, new Activity[]{Activity.SLEEP}),
+            new Item("Dog Bed", 100, 4, new Activity[]{Activity.SLEEP}),
+            new Item("Kennel", 200, 8, new Activity[]{Activity.SLEEP}),
+            new Item("Food Bowl", 50, 1, new Activity[]{Activity.EATING}),
+            new Item("Bone", 150, 3, new Activity[]{Activity.EATING}),
+            new Item("Ball", 100, 2, new Activity[]{Activity.PLAYING}),
+            new Item("Chew Toy", 300, 5, new Activity[]{Activity.PLAYING}),
+            new Item("Bath Tub", 150, 3, new Activity[]{Activity.BATHING}),
+            new Item("Fur Brush", 350, 7, new Activity[]{Activity.BATHING}),
         });
 
         shopItems.put(PetType.CAT, new Item[] {
-            new Item("Basket", 100, 10, new Activity[]{Activity.SLEEP}),
-            new Item("Food Bowl", 50, 10, new Activity[]{Activity.EATING}),
-            new Item("Bath Tub", 120, 6, new Activity[]{Activity.BATHING}),
-            new Item("Fur Brush", 30, 15, new Activity[]{Activity.BATHING}),
+            new Item("Cat Bed", 100, 4, new Activity[]{Activity.SLEEP}),
+            new Item("Basket", 200, 8, new Activity[]{Activity.SLEEP}),
+            new Item("Food Bowl", 50, 1, new Activity[]{Activity.EATING}),
+            new Item("Fish", 150, 3, new Activity[]{Activity.EATING}),
+            new Item("Wool", 100, 2, new Activity[]{Activity.PLAYING}),
+            new Item("Laser Toy", 300, 5, new Activity[]{Activity.PLAYING}),
+            new Item("Bath Tub", 150, 3, new Activity[]{Activity.BATHING}),
+            new Item("Fur Brush", 350, 7, new Activity[]{Activity.BATHING}),
         });
 
         shopItems.put(PetType.BIRD, new Item[] {
-            new Item("Cage", 120, 15, new Activity[]{Activity.SLEEP}),
-            new Item("Food Bowl", 40, 10, new Activity[]{Activity.EATING}),
-            new Item("Mirror Toy", 25, 20, new Activity[]{Activity.PLAYING}),
-            new Item("Bath Tub", 100, 6, new Activity[]{Activity.BATHING}),
+            new Item("Bird Cage", 100, 4, new Activity[]{Activity.SLEEP}),
+            new Item("Perch", 200, 8, new Activity[]{Activity.SLEEP}),
+            new Item("Food Bowl", 50, 1, new Activity[]{Activity.EATING}),
+            new Item("Seeds", 150, 3, new Activity[]{Activity.EATING}),
+            new Item("Swing", 100, 2, new Activity[]{Activity.PLAYING}),
+            new Item("Mirror", 300, 5, new Activity[]{Activity.PLAYING}),
+            new Item("Bath Tub", 150, 3, new Activity[]{Activity.BATHING}),
+            new Item("Feather Brush", 350, 7, new Activity[]{Activity.BATHING}),
         });
     }
 
-    // Method to display available items for the pet
     public static void displayShop(Pet pet) {
         System.out.println("\n=== Pet Shop ===");
         System.out.println("Your Current Bank Balance: $" + pet.getBankBalance());
@@ -94,12 +101,13 @@ public class Shop {
 
         Item[] items = shopItems.getOrDefault(pet.getPetType(), new Item[] {});
         for (int i = 0; i < items.length; i++) {
-            items[i].resetItem();
+            if (!items[i].isBought) {
+                items[i].resetItem(); // Reset any items with 0 life
+            }
             System.out.println((i + 1) + ". " + items[i]);
         }
     }
 
-    // Method to purchase items for the pet
     public static void purchaseItems(Pet pet) {
         Scanner scanner = new Scanner(System.in);
 
@@ -148,14 +156,12 @@ public class Shop {
         }
     }
 
-    // Method to use an item for an activity
     public static boolean useItemForActivity(Pet pet, String itemName, Activity activity) {
         Item[] items = shopItems.getOrDefault(pet.getPetType(), new Item[] {});
         Item itemToUse = null;
 
         for (Item item : items) {
             if (item.isBought) {
-                // Check if the item is associated with the activity
                 for (Activity a : item.activities) {
                     if (a == activity) {
                         itemToUse = item;
@@ -172,7 +178,13 @@ public class Shop {
         }
 
         itemToUse.reduceItemLife();
-        System.out.println("Used " + itemToUse.name + " for the activity: " + activity);
+        if (itemToUse.itemLife <= 0) {
+            itemToUse.resetItem();
+            System.out.println("The item " + itemToUse.name + " has been used up and is now available for purchase again.");
+        } else {
+            System.out.println("Used " + itemToUse.name + " for the activity: " + activity + ". Remaining life: " + itemToUse.itemLife);
+        }
+
         return true;
     }
 }

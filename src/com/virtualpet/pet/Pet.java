@@ -6,8 +6,8 @@ import com.virtualpet.shop.Shop;
 public class Pet {
     private PetType petType;
     private String name;
-    private static int bankBalance = 5000;
-    private int energy = 100, food = 100, bath = 100, sleep = 100, play = 100, happiness = 100, age = 0;
+    private static int bankBalance = 1000;
+    private int energy = 50, food = 50, bath = 50, sleep = 50, play = 50, happiness = 50, age = 0;
 
     public Pet(PetType petType, String name, int bankBalance) {
         this.petType = petType;
@@ -38,7 +38,11 @@ public class Pet {
 
     public void performActivity(Activity activity) {
         System.out.println("\nActivity: " + activity.name());
-
+        if (!Activity.canPerformActivity(food, energy, bath, sleep, play, happiness, activity)) {
+            System.out.println("Activity cannot proceed. Resolve the warnings first!");
+            return; // Exit without performing the activity
+        }
+        
         boolean itemAvailable = Shop.useItemForActivity(this, activity.name(), activity);
         
         while (!itemAvailable) {
