@@ -154,7 +154,7 @@ public class Shop {
         Item itemToUse = null;
 
         for (Item item : items) {
-            if (item.name.equalsIgnoreCase(itemName) && item.isBought) {
+            if (item.isBought) {
                 // Check if the item is associated with the activity
                 for (Activity a : item.activities) {
                     if (a == activity) {
