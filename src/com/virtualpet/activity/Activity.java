@@ -14,7 +14,6 @@ public enum Activity {
     private final int happinessChange;
     private final int gameLevelChange;
 
-    // Define thresholds
     private static final int MIN_THRESHOLD = 10;
 
     Activity(int foodChange, int energyChange, int bathChange, int sleepChange, int playChange, int happinessChange, int gameLevelChange) {
@@ -36,31 +35,42 @@ public enum Activity {
     public int getGameLevelChange() { return gameLevelChange; }
 
     public static boolean canPerformActivity(int food, int energy, int bath, int sleep, int play, int happiness, Activity activity) {
-        // Check each metric against its threshold
-        if (food + activity.getFoodChange() < MIN_THRESHOLD) {
-            System.out.println("Warning: Your pet is hungry and needs food.");
-            return food + activity.getFoodChange() > 0; // Block if it would fall below zero
+        boolean canProceed = true; // Start optimistic
+        StringBuilder warnings = new StringBuilder();
+    
+        // Check each metric and generate warnings if thresholds are breached
+        if (food + activity.getFoodChange() <= MIN_THRESHOLD) {
+            if (food > 0) warnings.append("Warning: Your pet is hungry and needs food.\n");
+            if (food + activity.getFoodChange() <= 0) canProceed = false;
         }
-        if (energy + activity.getEnergyChange() < MIN_THRESHOLD) {
-            System.out.println("Warning: Your pet is too tired.");
-            return energy + activity.getEnergyChange() > 0;
+        if (energy + activity.getEnergyChange() <= MIN_THRESHOLD) {
+            if (energy > 0) warnings.append("Warning: Your pet is too tired.\n");
+            if (energy + activity.getEnergyChange() <= 0) canProceed = false;
         }
-        if (bath + activity.getBathChange() < MIN_THRESHOLD) {
-            System.out.println("Warning: Your pet needs a bath to feel refreshed.");
-            return bath + activity.getBathChange() > 0;
+        if (bath + activity.getBathChange() <= MIN_THRESHOLD) {
+            if (bath > 0) warnings.append("Warning: Your pet needs a bath to feel refreshed.\n");
+            if (bath + activity.getBathChange() <= 0) canProceed = false;
         }
-        if (sleep + activity.getSleepChange() < MIN_THRESHOLD) {
-            System.out.println("Warning: Your pet needs sleep.");
-            return sleep + activity.getSleepChange() > 0;
+        if (sleep + activity.getSleepChange() <= MIN_THRESHOLD) {
+            if (sleep > 0) warnings.append("Warning: Your pet needs sleep.\n");
+            if (sleep + activity.getSleepChange() <= 0) canProceed = false;
         }
-        if (play + activity.getPlayChange() < MIN_THRESHOLD) {
-            System.out.println("Warning: Your pet feels lonely and wants to play.");
-            return play + activity.getPlayChange() > 0;
+        if (play + activity.getPlayChange() <= MIN_THRESHOLD) {
+            if (play > 0) warnings.append("Warning: Your pet feels lonely and wants to play.\n");
+            if (play + activity.getPlayChange() <= 0) canProceed = false;
         }
-        if (happiness + activity.getHappinessChange() < MIN_THRESHOLD) {
-            System.out.println("Warning: Your pet is unhappy and needs cheering up.");
-            return happiness + activity.getHappinessChange() > 0;
+        if (happiness + activity.getHappinessChange() <= MIN_THRESHOLD) {
+            if (happiness > 0) warnings.append("Warning: Your pet is unhappy and needs cheering up.\n");
+            if (happiness + activity.getHappinessChange() <= 0) canProceed = false;
         }
-        return true; // All thresholds met
+    
+        // Print warnings, if any
+        if (warnings.length() > 0) {
+            System.out.println(warnings.toString());
+        }
+    
+        return canProceed; // Allow activity only if no parameter hits zero
     }
+    
 }
+

@@ -42,7 +42,7 @@ public class Pet {
             System.out.println("Activity cannot proceed. Resolve the warnings first!");
             return; // Exit without performing the activity
         }
-        
+
         boolean itemAvailable = Shop.useItemForActivity(this, activity.name(), activity);
         
         while (!itemAvailable) {
@@ -59,6 +59,7 @@ public class Pet {
     
 
         if (itemAvailable) {
+            System.out.println(activity.name() + " performed successfully");
             // Apply activity effects only if item is available
             this.food = Math.max(0, food + activity.getFoodChange());
             this.energy = Math.max(0, energy + activity.getEnergyChange());
