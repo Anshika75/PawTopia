@@ -3,6 +3,7 @@ package com.virtualpet.config;
 
 import java.util.Scanner;
 
+import com.virtualpet.game.Game;
 import com.virtualpet.pet.Pet;
 import com.virtualpet.pet.PetType;
 
@@ -138,6 +139,7 @@ public class VaccinationManager {
         if (choice == 1) {
             // Restart game logic (you can reset the pet stats here)
             System.out.println("Restarting the game...");
+            Game.gameStart();
         } else {
             System.out.println("Exiting the game. Goodbye!");
             System.exit(0);
