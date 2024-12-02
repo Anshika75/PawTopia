@@ -60,7 +60,7 @@ public class Shop {
 
     private static final Map<PetType, Item[]> shopItems = new HashMap<>();
 
-    static {
+    private static void initializeShopItems()  {
         shopItems.put(PetType.DOG, new Item[] {
                 new Item("Dog Bed", 100, 4, new Activity[] { Activity.SLEEP }),
                 new Item("Kennel", 200, 8, new Activity[] { Activity.SLEEP }),
@@ -193,12 +193,8 @@ public class Shop {
     }
 
     public static void resetShop() {
-        for (Map.Entry<PetType, Item[]> entry : shopItems.entrySet()) {
-            Item[] items = entry.getValue();
-            for (Item item : items) {
-                item.resetItem(); // Reset each item in the shop
-            }
-        }
-        System.out.println("Shop has been reset. All items are now available for purchase again.");
+        shopItems.clear(); // Clear existing entries
+    initializeShopItems(); // Reinitialize shop items
+    System.out.println("Shop has been reset with new items.");
     }
 }
