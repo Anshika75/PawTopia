@@ -53,44 +53,45 @@ public class Shop {
             for (Activity activity : activities) {
                 activitiesList.append(activity).append(" ");
             }
-            return name + " - Price: $" + price + " | Associated Activity: " + activitiesList + " | Item Life: " + itemLife +  " | Status: " + (isBought ? " Bought" : " Available");
-         }
+            return name + " - Price: $" + price + " | Associated Activity: " + activitiesList + " | Item Life: "
+                    + itemLife + " | Status: " + (isBought ? " Bought" : " Available");
+        }
     }
 
     private static final Map<PetType, Item[]> shopItems = new HashMap<>();
 
     static {
         shopItems.put(PetType.DOG, new Item[] {
-            new Item("Dog Bed", 100, 4, new Activity[]{Activity.SLEEP}),
-            new Item("Kennel", 200, 8, new Activity[]{Activity.SLEEP}),
-            new Item("Food Bowl", 50, 1, new Activity[]{Activity.EATING}),
-            new Item("Bone", 150, 3, new Activity[]{Activity.EATING}),
-            new Item("Ball", 100, 2, new Activity[]{Activity.PLAYING}),
-            new Item("Chew Toy", 300, 5, new Activity[]{Activity.PLAYING}),
-            new Item("Bath Tub", 150, 3, new Activity[]{Activity.BATHING}),
-            new Item("Fur Brush", 350, 7, new Activity[]{Activity.BATHING}),
+                new Item("Dog Bed", 100, 4, new Activity[] { Activity.SLEEP }),
+                new Item("Kennel", 200, 8, new Activity[] { Activity.SLEEP }),
+                new Item("Food Bowl", 50, 1, new Activity[] { Activity.EATING }),
+                new Item("Bone", 150, 3, new Activity[] { Activity.EATING }),
+                new Item("Ball", 100, 2, new Activity[] { Activity.PLAYING }),
+                new Item("Chew Toy", 300, 5, new Activity[] { Activity.PLAYING }),
+                new Item("Bath Tub", 150, 3, new Activity[] { Activity.BATHING }),
+                new Item("Fur Brush", 350, 7, new Activity[] { Activity.BATHING }),
         });
 
         shopItems.put(PetType.CAT, new Item[] {
-            new Item("Cat Bed", 100, 4, new Activity[]{Activity.SLEEP}),
-            new Item("Basket", 200, 8, new Activity[]{Activity.SLEEP}),
-            new Item("Food Bowl", 50, 1, new Activity[]{Activity.EATING}),
-            new Item("Fish", 150, 3, new Activity[]{Activity.EATING}),
-            new Item("Wool", 100, 2, new Activity[]{Activity.PLAYING}),
-            new Item("Laser Toy", 300, 5, new Activity[]{Activity.PLAYING}),
-            new Item("Bath Tub", 150, 3, new Activity[]{Activity.BATHING}),
-            new Item("Fur Brush", 350, 7, new Activity[]{Activity.BATHING}),
+                new Item("Cat Bed", 100, 4, new Activity[] { Activity.SLEEP }),
+                new Item("Basket", 200, 8, new Activity[] { Activity.SLEEP }),
+                new Item("Food Bowl", 50, 1, new Activity[] { Activity.EATING }),
+                new Item("Fish", 150, 3, new Activity[] { Activity.EATING }),
+                new Item("Wool", 100, 2, new Activity[] { Activity.PLAYING }),
+                new Item("Laser Toy", 300, 5, new Activity[] { Activity.PLAYING }),
+                new Item("Bath Tub", 150, 3, new Activity[] { Activity.BATHING }),
+                new Item("Fur Brush", 350, 7, new Activity[] { Activity.BATHING }),
         });
 
         shopItems.put(PetType.BIRD, new Item[] {
-            new Item("Bird Cage", 100, 4, new Activity[]{Activity.SLEEP}),
-            new Item("Perch", 200, 8, new Activity[]{Activity.SLEEP}),
-            new Item("Food Bowl", 50, 1, new Activity[]{Activity.EATING}),
-            new Item("Seeds", 150, 3, new Activity[]{Activity.EATING}),
-            new Item("Swing", 100, 2, new Activity[]{Activity.PLAYING}),
-            new Item("Mirror", 300, 5, new Activity[]{Activity.PLAYING}),
-            new Item("Bath Tub", 150, 3, new Activity[]{Activity.BATHING}),
-            new Item("Feather Brush", 350, 7, new Activity[]{Activity.BATHING}),
+                new Item("Bird Cage", 100, 4, new Activity[] { Activity.SLEEP }),
+                new Item("Perch", 200, 8, new Activity[] { Activity.SLEEP }),
+                new Item("Food Bowl", 50, 1, new Activity[] { Activity.EATING }),
+                new Item("Seeds", 150, 3, new Activity[] { Activity.EATING }),
+                new Item("Swing", 100, 2, new Activity[] { Activity.PLAYING }),
+                new Item("Mirror", 300, 5, new Activity[] { Activity.PLAYING }),
+                new Item("Bath Tub", 150, 3, new Activity[] { Activity.BATHING }),
+                new Item("Feather Brush", 350, 7, new Activity[] { Activity.BATHING }),
         });
     }
 
@@ -168,7 +169,8 @@ public class Shop {
                         break;
                     }
                 }
-                if (itemToUse != null) break;
+                if (itemToUse != null)
+                    break;
             }
         }
 
@@ -180,11 +182,23 @@ public class Shop {
         itemToUse.reduceItemLife();
         if (itemToUse.itemLife <= 0) {
             itemToUse.resetItem();
-            System.out.println("The item " + itemToUse.name + " has been used up and is now available for purchase again.");
+            System.out.println(
+                    "The item " + itemToUse.name + " has been used up and is now available for purchase again.");
         } else {
-            System.out.println("Used " + itemToUse.name + " for the activity: " + activity + ". Remaining life: " + itemToUse.itemLife);
+            System.out.println("Used " + itemToUse.name + " for the activity: " + activity + ". Remaining life: "
+                    + itemToUse.itemLife);
         }
 
         return true;
+    }
+
+    public static void resetShop() {
+        for (Map.Entry<PetType, Item[]> entry : shopItems.entrySet()) {
+            Item[] items = entry.getValue();
+            for (Item item : items) {
+                item.resetItem(); // Reset each item in the shop
+            }
+        }
+        System.out.println("Shop has been reset. All items are now available for purchase again.");
     }
 }

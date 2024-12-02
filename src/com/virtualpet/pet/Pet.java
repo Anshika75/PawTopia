@@ -10,7 +10,7 @@ public class Pet {
     private String name;
     private static int bankBalance = 1000;
     private int energy = 50, food = 50, bath = 50, sleep = 50, play = 50, happiness = 50;
-    private double age = 0;
+    private double age = 0.0;
 
     public Pet(PetType petType, String name, int bankBalance) {
         this.petType = petType;
@@ -36,7 +36,7 @@ public class Pet {
     }
 
     public double getAge() {
-        return age;
+        return Math.round(age * 10.0) / 10.0;
     }
 
     public static void setBankBalance(int bankBalance) {
@@ -44,7 +44,7 @@ public class Pet {
     }
 
     public void setAge(double age) {
-        this.age = age;
+        this.age = Math.round(age * 10.0) / 10.0;
     }
 
     public void performActivity(Activity activity) {
@@ -67,7 +67,7 @@ public class Pet {
             }
         }
 
-        if (itemAvailable) {
+        if (itemAvailable && Activity.canPerformActivity(food, energy, bath, sleep, play, happiness, activity)) {
             // Apply activity effects only if item is available
             this.food = Math.max(0, food + activity.getFoodChange());
             this.energy = Math.max(0, energy + activity.getEnergyChange());
@@ -75,7 +75,7 @@ public class Pet {
             this.sleep = Math.max(0, sleep + activity.getSleepChange());
             this.play = Math.max(0, play + activity.getPlayChange());
             this.happiness = Math.max(0, happiness + activity.getHappinessChange());
-            this.age = this.age + 0.2;
+            this.setAge(this.age + 0.2);
             PetArt.printPetArt(petType, name, activity.name());
             VaccinationManager.checkVaccination(this);
         } else {
@@ -96,12 +96,16 @@ public class Pet {
         System.out.println("Happiness: " + happiness);
     }
 
-    public static void resetStats(){
+    public void resetStats() {
+        System.out.println("\nResetting all pet stats to default values...");
         this.energy = 50;
         this.food = 50;
         this.bath = 50;
         this.sleep = 50;
         this.play = 50;
         this.happiness = 50;
+        this.age = 0.0;
+        Pet.bankBalance = 1000; // Resetting bank balance
+        System.out.println("All stats have been reset!");
     }
 }

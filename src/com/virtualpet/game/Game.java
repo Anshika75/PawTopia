@@ -14,7 +14,7 @@ public class Game {
     public static void main(String[] args) {
         gameStart();
     }
-    
+
     public static void gameStart() {
         System.out.println("Welcome to the Virtual Pet Game!");
 
@@ -26,7 +26,8 @@ public class Game {
 
         // Create Pet object with name from PetName class and initial bank balance
         Pet pet = new Pet(selectedPet, petName, 1000); // Initialize Pet with name, type, and bank balance
-
+        pet.resetStats();
+        Shop.resetShop();
         // Display pet details
         System.out.println("\nYour pet details:");
         System.out.println("Type: " + selectedPet.name());
@@ -79,6 +80,7 @@ public class Game {
                 case 2 -> Shop.purchaseItems(pet); // Allow item purchase
                 case 3 -> {
                     System.out.println("\nExiting the game. See you next time!");
+                    System.exit(0);
                     gameActive = false;
                 }
                 default -> System.out.println("Invalid choice. Please try again.");
@@ -89,7 +91,6 @@ public class Game {
                 pet.displayMetrics();
             }
         }
-
         scanner.close();
     }
 
