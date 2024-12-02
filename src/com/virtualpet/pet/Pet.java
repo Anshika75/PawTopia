@@ -95,4 +95,13 @@ public class Pet {
         System.out.println("Play: " + play);
         System.out.println("Happiness: " + happiness);
     }
+
+    public static void resetStats(){
+        this.energy = 50;
+        this.food = 50;
+        this.bath = 50;
+        this.sleep = 50;
+        this.play = 50;
+        this.happiness = 50;
+    }
 }

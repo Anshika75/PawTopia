@@ -140,6 +140,7 @@ public class VaccinationManager {
             // Restart game logic (you can reset the pet stats here)
             System.out.println("Restarting the game...");
             Game.gameStart();
+            Pet.resetStats();
         } else {
             System.out.println("Exiting the game. Goodbye!");
             System.exit(0);
