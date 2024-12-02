@@ -21,7 +21,7 @@ public class Game {
         String petName = PetName.namePet();
 
         // Create Pet object with name from PetName class and initial bank balance
-        Pet pet = new Pet(selectedPet, petName, 5000); // Initialize Pet with name, type, and bank balance
+        Pet pet = new Pet(selectedPet, petName, 1000); // Initialize Pet with name, type, and bank balance
 
         // Display pet details
         System.out.println("\nYour pet details:");
