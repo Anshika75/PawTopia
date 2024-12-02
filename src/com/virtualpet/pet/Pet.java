@@ -2,6 +2,7 @@ package com.virtualpet.pet;
 
 import com.virtualpet.activity.Activity;
 import com.virtualpet.asciiart.PetArt;
+import com.virtualpet.config.VaccinationManager;
 import com.virtualpet.shop.Shop;
 
 public class Pet {
@@ -34,8 +35,16 @@ public class Pet {
         return bankBalance;
     }
 
+    public double getAge() {
+        return age;
+    }
+
     public static void setBankBalance(int bankBalance) {
         Pet.bankBalance = bankBalance;
+    }
+
+    public void setAge(double age) {
+        this.age = age;
     }
 
     public void performActivity(Activity activity) {
@@ -67,10 +76,11 @@ public class Pet {
             this.play = Math.max(0, play + activity.getPlayChange());
             this.happiness = Math.max(0, happiness + activity.getHappinessChange());
             this.age = this.age + 0.2;
+            PetArt.printPetArt(petType, name, activity.name());
+            VaccinationManager.checkVaccination(this);
         } else {
             System.out.println("Activity cannot be performed due to missing items.");
         }
-        PetArt.printPetArt(petType, name, activity.name());
     }
 
     public void displayMetrics() {

@@ -12,6 +12,10 @@ import com.virtualpet.shop.Shop;
 
 public class Game {
     public static void main(String[] args) {
+        gameStart();
+    }
+    
+    public static void gameStart() {
         System.out.println("Welcome to the Virtual Pet Game!");
 
         // User selects pet type, breed, color, and name
