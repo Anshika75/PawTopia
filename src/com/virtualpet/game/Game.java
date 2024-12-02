@@ -67,6 +67,7 @@ public class Game {
 
                     if (selectedActivity != null) {
                         pet.performActivity(selectedActivity);
+                        PetArt.printPetArt(selectedPet, petName, selectedActivity.name());
                         countdown(5);
                     } else {
                         System.out.println("Invalid activity choice. Please try again.");
