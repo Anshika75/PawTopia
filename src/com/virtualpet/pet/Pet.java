@@ -41,18 +41,31 @@ public class Pet {
 
         boolean itemAvailable = Shop.useItemForActivity(this, activity.name(), activity);
         
-        if (!itemAvailable) {
+        while (!itemAvailable) {
             System.out.println("Redirecting to the shop...");
             Shop.purchaseItems(this);
+    
+            itemAvailable = Shop.useItemForActivity(this, activity.name(), activity);
+    
+            if (!itemAvailable) {
+                System.out.println("Item for the activity is still unavailable. Please purchase the required item.");
+                break;
+            }
         }
+    
 
-        this.food = Math.max(0, food + activity.getFoodChange());
-        this.energy = Math.max(0, energy + activity.getEnergyChange());
-        this.bath = Math.max(0, bath + activity.getBathChange());
-        this.sleep = Math.max(0, sleep + activity.getSleepChange());
-        this.play = Math.max(0, play + activity.getPlayChange());
-        this.happiness = Math.max(0, happiness + activity.getHappinessChange());
-        this.age++;
+        if (itemAvailable) {
+            // Apply activity effects only if item is available
+            this.food = Math.max(0, food + activity.getFoodChange());
+            this.energy = Math.max(0, energy + activity.getEnergyChange());
+            this.bath = Math.max(0, bath + activity.getBathChange());
+            this.sleep = Math.max(0, sleep + activity.getSleepChange());
+            this.play = Math.max(0, play + activity.getPlayChange());
+            this.happiness = Math.max(0, happiness + activity.getHappinessChange());
+            this.age++;
+        } else {
+            System.out.println("Activity cannot be performed due to missing items.");
+        }
     }
 
     public void displayMetrics() {
