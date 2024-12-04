@@ -34,7 +34,7 @@ public enum Activity {
     public int getHappinessChange() { return happinessChange; }
     public int getGameLevelChange() { return gameLevelChange; }
 
-    public static boolean canPerformActivity(int food, int energy, int bath, int sleep, int play, int happiness, Activity activity) {
+    public static boolean canPerformActivity(int food, int energy, int bath, int sleep, int play, int happiness, Activity activity, int gameLevel) {
         boolean canProceed = true; // Start optimistic
         StringBuilder warnings = new StringBuilder();
     

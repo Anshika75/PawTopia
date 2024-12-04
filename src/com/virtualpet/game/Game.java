@@ -3,11 +3,13 @@ package com.virtualpet.game;
 import java.util.Scanner;
 import com.virtualpet.activity.Activity;
 import com.virtualpet.asciiart.PetArt;
+import com.virtualpet.config.VaccinationManager;
 import com.virtualpet.pet.PetType;
 import com.virtualpet.pet.PetBreed;
 import com.virtualpet.pet.PetColor;
 import com.virtualpet.pet.PetName;
 import com.virtualpet.pet.Pet;
+import com.virtualpet.shop.PointsShop;
 import com.virtualpet.shop.Shop;
 
 public class Game {
@@ -41,7 +43,7 @@ public class Game {
         // Display ASCII art and game start countdown
         PetArt.printPetArt(selectedPet, pet.getName()); // Use pet's name
         System.out.println("\nGame starting...");
-        countdown(5);
+        countdown(3);
 
         pet.displayMetrics();
 
@@ -51,7 +53,7 @@ public class Game {
 
         while (gameActive) {
             System.out.println("\nWhat would you like to do next?");
-            System.out.println("1. Perform an activity\n2. Visit the shop\n3. Exit");
+            System.out.println("1. Perform an activity\n2. Visit the shop\n3. Visit point shop\n4. Print Vaccination Schedule\n5. Restart game\n6. Quit game");
             System.out.print("Enter your choice: ");
             int mainChoice = scanner.nextInt();
 
@@ -72,23 +74,29 @@ public class Game {
 
                     if (selectedActivity != null) {
                         pet.performActivity(selectedActivity);
-                        countdown(5);
+                        countdown(3);
+                        pet.displayMetrics();
                     } else {
                         System.out.println("Invalid activity choice. Please try again.");
                     }
                 }
                 case 2 -> Shop.purchaseItems(pet); // Allow item purchase
-                case 3 -> {
+                case 3 -> { 
+                    PointsShop.purchaseBoost(pet);
+                    countdown(3);
+                    pet.displayMetrics();
+                }
+                case 4 ->  VaccinationManager.printVaccinationSchedule(pet);
+                case 5 -> {
+                    System.out.println("\nRestarting the game...");
+                    gameStart();
+                }
+                case 6-> {
                     System.out.println("\nExiting the game. See you next time!");
                     System.exit(0);
                     gameActive = false;
                 }
                 default -> System.out.println("Invalid choice. Please try again.");
-            }
-
-            // Display updated metrics
-            if (gameActive) {
-                pet.displayMetrics();
             }
         }
         scanner.close();
