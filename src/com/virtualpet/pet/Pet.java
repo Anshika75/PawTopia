@@ -97,7 +97,6 @@ public class Pet {
     }
 
     public void resetStats() {
-        System.out.println("\nResetting all pet stats to default values...");
         this.energy = 50;
         this.food = 50;
         this.bath = 50;

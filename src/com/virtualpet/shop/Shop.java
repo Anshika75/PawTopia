@@ -195,6 +195,5 @@ public class Shop {
     public static void resetShop() {
         shopItems.clear(); // Clear existing entries
     initializeShopItems(); // Reinitialize shop items
-    System.out.println("Shop has been reset with new items.");
     }
 }
