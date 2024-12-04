@@ -11,6 +11,7 @@ import com.virtualpet.pet.PetName;
 import com.virtualpet.pet.Pet;
 import com.virtualpet.shop.PointsShop;
 import com.virtualpet.shop.Shop;
+import com.virtualpet.story.Story;
 
 public class Game {
     public static void main(String[] args) {
@@ -53,7 +54,7 @@ public class Game {
 
         while (gameActive) {
             System.out.println("\nWhat would you like to do next?");
-            System.out.println("1. Perform an activity\n2. Visit the shop\n3. Visit point shop\n4. Print Vaccination Schedule\n5. Restart game\n6. Quit game");
+            System.out.println("1. Perform an activity\n2. Visit the shop\n3. Visit point shop\n4. Print Vaccination Schedule\n5. Play and earn\n6. Restart game\n7. Quit game");
             System.out.print("Enter your choice: ");
             int mainChoice = scanner.nextInt();
 
@@ -87,11 +88,12 @@ public class Game {
                     pet.displayMetrics();
                 }
                 case 4 ->  VaccinationManager.printVaccinationSchedule(pet);
-                case 5 -> {
+                case 5 -> Story.displayAndPlayStories(pet);
+                case 6 -> {
                     System.out.println("\nRestarting the game...");
                     gameStart();
                 }
-                case 6-> {
+                case 7-> {
                     System.out.println("\nExiting the game. See you next time!");
                     System.exit(0);
                     gameActive = false;
@@ -99,7 +101,7 @@ public class Game {
                 default -> System.out.println("Invalid choice. Please try again.");
             }
         }
-        scanner.close();
+         ;
     }
 
     private static void countdown(int seconds) {

@@ -42,6 +42,7 @@ public enum PetType {
             selectedPet = PetType.DOG;
         }
 
+         ;
         return selectedPet;
     }
 }

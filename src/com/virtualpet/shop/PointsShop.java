@@ -29,12 +29,18 @@ public class PointsShop {
 
     static {
         boosts = new Boost[] {
-            new Boost("Sleep Boost", 150, "Increases Sleep Points by 50.", () -> {}),
-            new Boost("Play Boost", 150, "Increases Play Points by 50.", () -> {}),
-            new Boost("Eating Boost", 150, "Increases Eating Points by 50.", () -> {}),
-            new Boost("Energy Boost", 250, "Increases Energy Points by 50.", () -> {}),
-            new Boost("Happiness Boost", 200, "Increases Happiness Points by 50.", () -> {}),
-            new Boost("Bathing Boost", 150, "Increases Bathing Points by 50.", () -> {})
+                new Boost("Sleep Boost", 150, "Increases Sleep Points by 50.", () -> {
+                }),
+                new Boost("Play Boost", 150, "Increases Play Points by 50.", () -> {
+                }),
+                new Boost("Eating Boost", 150, "Increases Eating Points by 50.", () -> {
+                }),
+                new Boost("Energy Boost", 250, "Increases Energy Points by 50.", () -> {
+                }),
+                new Boost("Happiness Boost", 200, "Increases Happiness Points by 50.", () -> {
+                }),
+                new Boost("Bathing Boost", 150, "Increases Bathing Points by 50.", () -> {
+                })
         };
     }
 
@@ -57,6 +63,7 @@ public class PointsShop {
 
         if (input.isEmpty()) {
             System.out.println("You chose not to purchase any boosts.");
+             ;
             return;
         }
 
@@ -65,6 +72,7 @@ public class PointsShop {
 
             if (boostNumber < 0 || boostNumber >= boosts.length) {
                 System.out.println("Invalid boost number.");
+                 ;
                 return;
             }
 
@@ -72,7 +80,8 @@ public class PointsShop {
 
             if (pet.getBankBalance() >= selectedBoost.cost) {
                 pet.setBankBalance(pet.getBankBalance() - selectedBoost.cost);
-                System.out.println("Purchased: " + selectedBoost.name + " for $" + selectedBoost.cost + ".\nBoosting " + pet.getName());
+                System.out.println("Purchased: " + selectedBoost.name + " for $" + selectedBoost.cost + ".\nBoosting "
+                        + pet.getName());
 
                 // Apply the boost effect
                 switch (boostNumber) {
@@ -83,6 +92,7 @@ public class PointsShop {
                     case 4 -> pet.setHappinessPoints(pet.getHappinessPoints() + 50);
                     case 5 -> pet.setBathingPoints(pet.getBathingPoints() + 50);
                 }
+
             } else {
                 System.out.println("Not enough bank balance to purchase: " + selectedBoost.name);
             }

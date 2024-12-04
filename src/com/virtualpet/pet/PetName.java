@@ -29,6 +29,7 @@ public class PetName {
         }
 
         System.out.println("\nGreat! Your pet's name is " + petName + ".");
+         ;
         return petName;
     }
 }

@@ -63,6 +63,7 @@ public enum PetColor {
             System.out.println("\nInvalid input! Defaulting to " + selectedColor + ".");
         }
 
+         ;
         return selectedColor;
     }
 }

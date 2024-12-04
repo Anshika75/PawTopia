@@ -37,6 +37,7 @@ public class PetBreed {
             System.out.println("\nInvalid input! Defaulting to " + selectedBreed + ".");
         }
 
+         ;
         return selectedBreed;
     }
 }

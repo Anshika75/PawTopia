@@ -89,7 +89,7 @@ public class Pet {
         return name;
     }
 
-    public static int getBankBalance() {
+    public int getBankBalance() {
         return bankBalance;
     }
 
@@ -97,7 +97,7 @@ public class Pet {
         return Math.round(age * 10.0) / 10.0;
     }
 
-    public static void setBankBalance(int bankBalance) {
+    public void setBankBalance(int bankBalance) {
         Pet.bankBalance = bankBalance;
     }
 
@@ -153,6 +153,7 @@ public class Pet {
         System.out.println("Sleep: " + sleep);
         System.out.println("Play: " + play);
         System.out.println("Happiness: " + happiness);
+        System.out.println("Game Level: " + gameLevel);
     }
 
     public void resetStats() {

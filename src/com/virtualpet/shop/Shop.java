@@ -60,7 +60,7 @@ public class Shop {
 
     private static final Map<PetType, Item[]> shopItems = new HashMap<>();
 
-    private static void initializeShopItems()  {
+    private static void initializeShopItems() {
         shopItems.put(PetType.DOG, new Item[] {
                 new Item("Dog Bed", 100, 4, new Activity[] { Activity.SLEEP }),
                 new Item("Kennel", 200, 8, new Activity[] { Activity.SLEEP }),
@@ -119,6 +119,7 @@ public class Shop {
 
         if (input.isEmpty()) {
             System.out.println("You chose not to purchase any items.");
+             ;
             return;
         }
 
@@ -141,6 +142,8 @@ public class Shop {
                     pet.setBankBalance(pet.getBankBalance() - selectedItem.price);
                     selectedItem.buyItem();
                     System.out.println("You successfully purchased: " + selectedItem.name);
+                     ;
+
                 } else {
                     System.out.println("Not enough balance to purchase: " + selectedItem.name);
                 }
@@ -194,6 +197,6 @@ public class Shop {
 
     public static void resetShop() {
         shopItems.clear(); // Clear existing entries
-    initializeShopItems(); // Reinitialize shop items
+        initializeShopItems(); // Reinitialize shop items
     }
 }
