@@ -24,14 +24,10 @@ public class TheMysteriousCase extends Story {
 
         if (choice == 1) {
             System.out.println(
-                    "\nYou and " + pet.getName() + " decide to take action and head to the outskirts of town.");
-             ;
-            return investigateArea(pet);
+                    "\nYou and " + pet.getName() + " decide to take action and head to the outskirts of town.");             return investigateArea(pet);
         } else {
             System.out.println(
-                    "\nYou decide to wait for authorities, but the increasing sense of dread suggests something sinister is at play.");
-             ;
-            return false;
+                    "\nYou decide to wait for authorities, but the increasing sense of dread suggests something sinister is at play.");             return false;
         }
 
     }
@@ -47,12 +43,8 @@ public class TheMysteriousCase extends Story {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        if (choice == 1) {
-             ;
-            return followTrail(pet);
-        } else {
-             ;
-            return exploreHouse(pet);
+        if (choice == 1) {             return followTrail(pet);
+        } else {             return exploreHouse(pet);
         }
     }
 
@@ -67,12 +59,8 @@ public class TheMysteriousCase extends Story {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        if (choice == 1) {
-             ;
-            return encounterMystery(pet);
-        } else {
-             ;
-            return gatherInformation(pet);
+        if (choice == 1) {             return encounterMystery(pet);
+        } else {             return gatherInformation(pet);
         }
     }
 
@@ -88,19 +76,15 @@ public class TheMysteriousCase extends Story {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        if (choice == 1) {
-             ;
-            return assistMysteriousFigure(pet);
-        } else {
-             ;
-            return demandAnswers(pet);
+        if (choice == 1) {             return assistMysteriousFigure(pet);
+        } else {             return demandAnswers(pet);
         }
     }
 
     private boolean assistMysteriousFigure(Pet pet) {
         System.out.println("\nThe figure leads you to an old, overgrown shrine deep within the forest.");
         System.out.println("As you begin to help them search, your pet, " + pet.getName()
-                + ", starts barking loudly, sensing danger.");
+                + ", starts " + pet.getVoice() + "ing loudly, sensing danger.");
         System.out.println("Do you:");
         System.out.println("1. Ignore the warning and continue the search.");
         System.out.println("2. Heed the warning and prepare for something unexpected.\n");
@@ -108,12 +92,8 @@ public class TheMysteriousCase extends Story {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        if (choice == 1) {
-             ;
-            return uncoverDarkSecret(pet);
-        } else {
-             ;
-            return prepareForConfrontation(pet);
+        if (choice == 1) {             return uncoverDarkSecret(pet);
+        } else {             return prepareForConfrontation(pet);
         }
     }
 
@@ -149,12 +129,8 @@ public class TheMysteriousCase extends Story {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        if (choice == 1) {
-             ;
-            return interruptRitual(pet);
-        } else {
-             ;
-            return findSurvivors(pet);
+        if (choice == 1) {             return interruptRitual(pet);
+        } else {             return findSurvivors(pet);
         }
     }
 
@@ -185,12 +161,8 @@ public class TheMysteriousCase extends Story {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        if (choice == 1) {
-             ;
-            return gatherMoreClues(pet);
-        } else {
-             ;
-            return faceTheIntruder(pet);
+        if (choice == 1) {             return gatherMoreClues(pet);
+        } else {             return faceTheIntruder(pet);
         }
     }
 
@@ -202,7 +174,7 @@ public class TheMysteriousCase extends Story {
     }
 
     private boolean faceTheIntruder(Pet pet) {
-        System.out.println("\nYou confront the intruder, and after a brief struggle, you manage to overpower them.");
+        System.out.println("\nYou confront the intruder, and after a brief struggle, you and your pet manage to overpower them.");
         System.out.println(
                 "They reveal themselves as a member of the same cult, and offer to cooperate in exchange for their life.");
         return cultHideout(pet);

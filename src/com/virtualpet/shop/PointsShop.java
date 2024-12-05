@@ -63,7 +63,6 @@ public class PointsShop {
 
         if (input.isEmpty()) {
             System.out.println("You chose not to purchase any boosts.");
-             ;
             return;
         }
 

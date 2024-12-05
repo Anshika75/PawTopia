@@ -119,7 +119,7 @@ public class Shop {
 
         if (input.isEmpty()) {
             System.out.println("You chose not to purchase any items.");
-             ;
+
             return;
         }
 

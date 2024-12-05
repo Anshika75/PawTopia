@@ -8,6 +8,7 @@ import com.virtualpet.shop.Shop;
 public class Pet {
     private PetType petType;
     private String name;
+    private PetType type;
     private static int bankBalance = 1000;
     private int energy = 50, food = 50, bath = 50, sleep = 50, play = 50, happiness = 50, gameLevel = 0;
     private double age = 0.0;
@@ -74,6 +75,7 @@ public class Pet {
         this.petType = petType;
         this.name = name;
         Pet.bankBalance = bankBalance;
+        this.type = petType;
     }
 
     public Pet(PetType petType, String name) {
@@ -166,5 +168,18 @@ public class Pet {
         this.age = 0.0;
         Pet.bankBalance = 1000; // Resetting bank balance
         System.out.println("All stats have been reset!");
+    }
+
+    public String getVoice() {
+        switch (type) {
+            case DOG:
+                return "bark";
+            case CAT:
+                return "meow";
+            case BIRD:
+                return "chirp";
+            default:
+                return "makes a sound";
+        }
     }
 }

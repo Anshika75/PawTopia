@@ -15,7 +15,7 @@ public class TheLostTreasureStory extends Story {
     @Override
     public boolean playStory(Pet pet) {
         System.out.println('\n' + getDescription());
-        System.out.println("Your pet " + pet.getName() + " wags its tail (or reacts excitedly).");
+        System.out.println("Your pet " + pet.getName() + " " + pet.getVoice() + "s excitedly.");
         System.out.println("1. Follow the map");
         System.out.println("2. Ignore it and head home\n");
 
@@ -23,13 +23,9 @@ public class TheLostTreasureStory extends Story {
         int choice = scanner.nextInt();
 
         if (choice == 1) {
-            System.out.println('\n' + pet.getName() + " sniffs the map and leads the way!");
-             ;
-            return followMap(pet); // Call the method to handle the next steps after following the map
+            System.out.println('\n' + pet.getName() + " sniffs the map and leads the way!");             return followMap(pet); // Call the method to handle the next steps after following the map
         } else {
-            System.out.println("\nYou decide to ignore the map. " + pet.getName() + " looks disappointed.");
-             ;
-            return false;
+            System.out.println("\nYou decide to ignore the map. " + pet.getName() + " looks disappointed.");             return false;
         }
     }
 
@@ -43,16 +39,10 @@ public class TheLostTreasureStory extends Story {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        if (choice == 1) {
-             ;
-            return goToMountains(pet);
-        } else if (choice == 2) {
-             ;
-            return enterCave(pet);
+        if (choice == 1) {             return goToMountains(pet);
+        } else if (choice == 2) {             return enterCave(pet);
         } else {
-            System.out.println("\nYou decide to turn back. " + pet.getName() + " gives you a puzzled look.");
-             ;
-            return false;
+            System.out.println("\nYou decide to turn back. " + pet.getName() + " gives you a puzzled look.");             return false;
         }
     }
 
@@ -66,14 +56,10 @@ public class TheLostTreasureStory extends Story {
         int choice = scanner.nextInt();
 
         if (choice == 1) {
-            System.out.println("\nThe guide takes you through hidden trails, leading you to the treasure!");
-             ;
-            updatePetReward(pet, 150, 1); // Reward: 150 bank balance and 1 level increment
+            System.out.println("\nThe guide takes you through hidden trails, leading you to the treasure!");             updatePetReward(pet, 150, 1); // Reward: 150 bank balance and 1 level increment
         } else {
             System.out.println('\n' + pet.getName() + " sniffs the air and finds a hidden path!");
-            System.out.println("The path leads you directly to a golden chest filled with treasures!");
-             ;
-            updatePetReward(pet, 200, 2); // Greater reward for trusting the pet
+            System.out.println("The path leads you directly to a golden chest filled with treasures!");             updatePetReward(pet, 200, 2); // Greater reward for trusting the pet
         }
 
         return true;
@@ -90,9 +76,7 @@ public class TheLostTreasureStory extends Story {
 
         if (choice == 1) {
             System.out.println('\n' + pet.getName() + " leads you confidently down the crystal-lit path.");
-            System.out.println("You find a small treasure chest filled with ancient coins!");
-             ;
-            updatePetReward(pet, 100, 1); // Smaller reward for easier path
+            System.out.println("You find a small treasure chest filled with ancient coins!");             updatePetReward(pet, 100, 1); // Smaller reward for easier path
         } else {
             System.out.println("\nYou take the dark path. Suddenly, a giant spider blocks your way!");
             System.out.println("Do you and " + pet.getName() + " face the spider together?");
@@ -102,13 +86,9 @@ public class TheLostTreasureStory extends Story {
             int fightChoice = scanner.nextInt();
 
             if (fightChoice == 1) {
-                System.out.println('\n' + pet.getName() + " courageously barks and distracts the spider while you defeat it!");
-             ;
-            updatePetReward(pet, 250, 3); // Greater reward for overcoming a tough challenge
+                System.out.println('\n' + pet.getName() + " courageously " + pet.getVoice() + "s and distracts the spider while you defeat it!");             updatePetReward(pet, 250, 3); // Greater reward for overcoming a tough challenge
             } else {
-                System.out.println("\nYou retreat safely, but you miss the treasure.");
-             ;
-            return false; // No reward for retreating
+                System.out.println("\nYou retreat safely, but you miss the treasure.");             return false; // No reward for retreating
             }
         }
 

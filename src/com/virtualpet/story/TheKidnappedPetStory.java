@@ -15,7 +15,7 @@ public class TheKidnappedPetStory extends Story {
     @Override
     public boolean playStory(Pet pet) {
         System.out.println("\n" + getDescription());
-        System.out.println("Your pet " + pet.getName() + " is growling, clearly upset.");
+        System.out.println("Your pet " + pet.getName() + " is " + pet.getVoice() + "ing, clearly upset.");
         System.out.println("1. Follow the trail immediately and search for clues.");
         System.out.println("2. Call the authorities and wait for their help.\n");
 
@@ -24,11 +24,9 @@ public class TheKidnappedPetStory extends Story {
 
         if (choice == 1) {
             System.out.println("\nYou and " + pet.getName() + " decide to take action, setting off to follow the trail.");
-             ;
             return followTrail(pet);
         } else {
             System.out.println("\nYou decide to wait for help, but the time spent waiting only deepens the feeling of dread.");
-             ;
             return false;
         }
     }
@@ -44,10 +42,8 @@ public class TheKidnappedPetStory extends Story {
         int choice = scanner.nextInt();
 
         if (choice == 1) {
-             ;
             return exploreUnderground(pet);
         } else {
-             ;
             return confrontKidnapper(pet);
         }
     }
@@ -63,10 +59,8 @@ public class TheKidnappedPetStory extends Story {
         int choice = scanner.nextInt();
 
         if (choice == 1) {
-             ;
             return faceKidnapper(pet);
         } else {
-             ;
             return gatherInformation(pet);
         }
     }
@@ -82,14 +76,12 @@ public class TheKidnappedPetStory extends Story {
         int choice = scanner.nextInt();
 
         if (choice == 1) {
-            System.out.println("\nYour pet " + pet.getName() + " growls fiercely, scaring the kidnapper into revealing the truth.");
+            System.out.println("\nYour pet " + pet.getName() + " " +  pet.getVoice() + " fiercely, scaring the kidnapper into revealing the truth.");
             System.out.println("They tell you where your friend is held—an old abandoned warehouse by the docks.");
-             ;
             return rescueFriend(pet);
         } else {
             System.out.println("\nThe kidnapper scoffs at your pleas. They throw a smoke bomb, vanishing in a cloud of smoke.");
             System.out.println("You and " + pet.getName() + " are left alone in the darkness, frustrated.");
-             ;
             return false;
         }
     }
@@ -111,11 +103,9 @@ public class TheKidnappedPetStory extends Story {
         int choice = scanner.nextInt();
 
         if (choice == 1) {
-             ;
             return rescueFriend(pet);
         } else {
             System.out.println("\nThe kidnapper scoffs and threatens to harm your friend. This only fuels your determination to proceed.");
-             ;
             return rescueFriend(pet);
         }
     }
@@ -131,24 +121,24 @@ public class TheKidnappedPetStory extends Story {
         int choice = scanner.nextInt();
 
         if (choice == 1) {
-             ;
+            
             return fightKidnapper(pet);
         } else {
-             ;
+            
             return strategize(pet);
         }
     }
 
     private boolean fightKidnapper(Pet pet) {
         System.out.println("\nYou and " + pet.getName() + " burst into the warehouse, catching the kidnapper off guard.");
-        System.out.println("After a brief struggle, you overpower them, freeing your friend from the ropes.");
+        System.out.println("After a brief struggle, you and " + pet.getName() + " overpower them, freeing your friend from the ropes.");
         updatePetReward(pet, 500, 4);
         return true;
     }
 
     private boolean strategize(Pet pet) {
         System.out.println("\nYou carefully observe the kidnapper’s movements, waiting for the perfect moment to strike.");
-        System.out.println("Your patience pays off when the kidnapper momentarily leaves the room, allowing you to sneak in and free your friend.");
+        System.out.println("Your patience pays off when the kidnapper momentarily leaves the room, allowing you and " + pet.getName() + " to sneak in and free your friend.");
         updatePetReward(pet, 750, 3);
         return true;
     }

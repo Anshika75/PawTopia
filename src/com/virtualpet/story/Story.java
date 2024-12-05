@@ -97,7 +97,6 @@ public abstract class Story {
                         .println("\nYou cannot play this story. You need to meet the level and balance requirements.");
             }
         } else {
-             ;
             System.out.println("\nInvalid choice. Please try again.");
         }
     }

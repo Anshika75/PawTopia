@@ -23,19 +23,15 @@ public class TheShadowedIsleStory extends Story {
         int choice = scanner.nextInt();
 
         if (choice == 1) {
-            System.out.println("\nYou and " + pet.getName() + " board the ship, ready for an adventure!");
-             ;
-            return exploreIsle(pet);
+            System.out.println("\nYou and " + pet.getName() + " board the ship, ready for an adventure!");             return exploreIsle(pet);
         } else {
-            System.out.println("\nYou decide to stay behind. " + pet.getName() + " seems relieved, but the sailor glares at you with suspicion.");
-             ;
-            return false;
+            System.out.println("\nYou decide to stay behind. " + pet.getName() + " seems relieved, but the sailor glares at you with suspicion.");             return false;
         }
     }
 
     private boolean exploreIsle(Pet pet) {
         System.out.println("\nAfter days at sea, the ship reaches a shadowy isle surrounded by jagged rocks.");
-        System.out.println("As you step ashore, strange symbols glow faintly on the sand. " + pet.getName() + " growls softly.");
+        System.out.println("As you step ashore, strange symbols glow faintly on the sand. " + pet.getName() + " " + pet.getVoice() + "s softly.");
         System.out.println("Do you investigate the symbols or proceed deeper into the jungle?");
         System.out.println("1. Examine the glowing symbols.");
         System.out.println("2. Ignore the symbols and head into the jungle.\n");
@@ -43,18 +39,14 @@ public class TheShadowedIsleStory extends Story {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        if (choice == 1) {
-             ;
-            return investigateSymbols(pet);
-        } else {
-             ;
-            return enterJungle(pet);
+        if (choice == 1) {             return investigateSymbols(pet);
+        } else {             return enterJungle(pet);
         }
     }
 
     private boolean investigateSymbols(Pet pet) {
         System.out.println("\nYou crouch down to examine the symbols. Suddenly, the ground trembles!");
-        System.out.println(pet.getName() + " barks and nudges you away just as a hidden trapdoor opens.");
+        System.out.println(pet.getName() + " " + pet.getVoice() + "s and nudges you away just as a hidden trapdoor opens.");
         System.out.println("Do you:");
         System.out.println("1. Descend into the trapdoor.");
         System.out.println("2. Retreat and head into the jungle instead.\n");
@@ -62,18 +54,14 @@ public class TheShadowedIsleStory extends Story {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        if (choice == 1) {
-             ;
-            return exploreUnderground(pet);
-        } else {
-             ;
-            return enterJungle(pet);
+        if (choice == 1) {             return exploreUnderground(pet);
+        } else {             return enterJungle(pet);
         }
     }
 
     private boolean enterJungle(Pet pet) {
         System.out.println("\nYou and " + pet.getName() + " venture into the thick jungle. The air is heavy with the scent of flowers, but it feels too quiet.");
-        System.out.println("You come across an ancient statue holding a gemstone. " + pet.getName() + " growls, sensing danger.");
+        System.out.println("You come across an ancient statue holding a gemstone. " + pet.getName() + " " + pet.getVoice() + "s, sensing danger.");
         System.out.println("Do you:");
         System.out.println("1. Take the gemstone.");
         System.out.println("2. Leave it and continue deeper into the jungle.\n");
@@ -83,15 +71,11 @@ public class TheShadowedIsleStory extends Story {
 
         if (choice == 1) {
             System.out.println("\nThe moment you touch the gemstone, the statue begins to move!");
-            System.out.println(pet.getName() + " barks furiously, helping you dodge the statue's attacks.");
+            System.out.println(pet.getName() + " " + pet.getVoice() + "s furiously, helping you dodge the statue's attacks.");
             System.out.println("You manage to escape with the gemstone, but your adventure continues.");
-            updatePetReward(pet, 150, 2);
-             ;
-            return encounterRuins(pet);
+            updatePetReward(pet, 150, 2);             return encounterRuins(pet);
         } else {
-            System.out.println("\nYou wisely leave the gemstone and proceed deeper. " + pet.getName() + " seems relieved.");
-             ;
-            return encounterRuins(pet);
+            System.out.println("\nYou wisely leave the gemstone and proceed deeper. " + pet.getName() + " seems relieved.");             return encounterRuins(pet);
         }
     }
 
@@ -107,13 +91,9 @@ public class TheShadowedIsleStory extends Story {
 
         if (choice == 1) {
             System.out.println("\nYou face traps, puzzles, and strange creatures, but " + pet.getName() + " proves invaluable.");
-            System.out.println("Together, you overcome the challenges and find a hidden cache of treasure!");
-             ;
-            updatePetReward(pet, 300, 4);
+            System.out.println("Together, you overcome the challenges and find a hidden cache of treasure!");             updatePetReward(pet, 300, 4);
         } else {
-            System.out.println("\nThe silent path is eerie, but it leads you safely to an ancient treasure chamber.");
-             ;
-            updatePetReward(pet, 200, 2);
+            System.out.println("\nThe silent path is eerie, but it leads you safely to an ancient treasure chamber.");             updatePetReward(pet, 200, 2);
         }
 
         return true;
@@ -131,13 +111,9 @@ public class TheShadowedIsleStory extends Story {
 
         if (choice == 1) {
             System.out.println("\nAs you reach for the chest, shadowy figures emerge! " + pet.getName() + " defends you valiantly.");
-            System.out.println("You manage to open the chest and claim the treasure before escaping.");
-             ;
-            updatePetReward(pet, 400, 5);
+            System.out.println("You manage to open the chest and claim the treasure before escaping.");             updatePetReward(pet, 400, 5);
         } else {
-            System.out.println("\nYou leave the temple, but " + pet.getName() + " barks insistently, leading you to another hidden cache of treasure.");
-             ;
-            updatePetReward(pet, 250, 3);
+            System.out.println("\nYou leave the temple, but " + pet.getName() + " " + pet.getVoice() + "s insistently, leading you to another hidden cache of treasure.");             updatePetReward(pet, 250, 3);
         }
 
         return true;
