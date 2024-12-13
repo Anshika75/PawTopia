@@ -2,6 +2,7 @@ package com.virtualpet.pet;
 
 import com.virtualpet.activity.Activity;
 import com.virtualpet.asciiart.PetArt;
+import com.virtualpet.config.GuardianManager;
 import com.virtualpet.config.VaccinationManager;
 import com.virtualpet.shop.Shop;
 
@@ -139,6 +140,7 @@ public class Pet {
             this.gameLevel += activity.getGameLevelChange();
             PetArt.printPetArt(petType, name, activity.name());
             VaccinationManager.checkVaccination(this);
+            GuardianManager.checkGuardianStatus(this);
         } else {
             System.out.println("Activity cannot be performed due to missing items.");
         }
@@ -180,6 +182,15 @@ public class Pet {
                 return "chirp";
             default:
                 return "makes a sound";
+        }
+    }  // ...existing code...
+    
+    private boolean isGuardian;
+    
+    public void setGuardian(boolean isGuardian) {
+        this.isGuardian = isGuardian;
+        if (isGuardian) {
+            System.out.println(this.name + " has ascended as a guardian.");
         }
     }
 }
