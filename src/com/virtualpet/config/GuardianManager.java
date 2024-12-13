@@ -10,9 +10,9 @@ import com.virtualpet.pet.PetType;
 public class GuardianManager {
 
     private static final Map<PetType, Double> AGE_THRESHOLD = Map.of(
-        PetType.DOG, 2.0,
-        PetType.CAT, 15.0,
-        PetType.BIRD, 5.0
+        PetType.DOG, 12.4,
+        PetType.CAT, 12.2,
+        PetType.BIRD, 7.6
     );
 
     // Check if the pet has reached the age limit and should ascend as a guardian
@@ -29,14 +29,15 @@ public class GuardianManager {
 
     // Trigger the guardian ascension logic
     private static void triggerGuardianAscension(Pet pet) {
-        System.out.println(pet.getName() + " has reached the age limit and is now ascending as a guardian.");
+        pet.setGuardian(true);
+        System.out.println("\n" + pet.getName() + " has reached the age limit and is now ascending as a guardian.");
         System.out.println("Congratulations! You won as you were able to take care of your pet till the very end.");
         endGame();
     }
 
     // End game method, ask if player wants to restart or quit
     private static void endGame() {
-        System.out.println("Would you like to restart or quit? (1 = Restart, 2 = Quit)");
+        System.out.println("\n Would you like to restart or quit? (1 = Restart, 2 = Quit)");
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
         if (choice == 1) {

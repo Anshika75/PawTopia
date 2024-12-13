@@ -13,7 +13,7 @@ public class Pet {
     private static int bankBalance = 1000;
     private int energy = 50, food = 50, bath = 50, sleep = 50, play = 50, happiness = 50, gameLevel = 0;
     private double age = 0.0;
-
+    private boolean isGuardian;
 
     // Getters and Setters
     public int getSleepPoints() {
@@ -183,9 +183,8 @@ public class Pet {
             default:
                 return "makes a sound";
         }
-    }  // ...existing code...
+    }
     
-    private boolean isGuardian;
     
     public void setGuardian(boolean isGuardian) {
         this.isGuardian = isGuardian;
