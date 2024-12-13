@@ -72,8 +72,15 @@ public class VaccinationManager {
         Map<Double, String> schedule = VACCINATION_SCHEDULE.get(petType);
 
         if (schedule != null) {
-            schedule.forEach((age, vaccine) -> 
-                System.out.println(age + " years: " + vaccine + " Vaccination - $" + getVaccineCost(vaccine)));
+            List<Map.Entry<Double, String>> sortedSchedule = new ArrayList<>(schedule.entrySet());
+            sortedSchedule.sort(Comparator.comparing(Map.Entry::getKey));
+    
+            // Print the sorted schedule
+            for (Map.Entry<Double, String> entry : sortedSchedule) {
+                double age = entry.getKey();
+                String vaccine = entry.getValue();
+                System.out.println(age + " years: " + vaccine + " Vaccination - $" + getVaccineCost(vaccine));
+            }
         } else {
             System.out.println("No vaccination schedule available for this pet type.");
         }

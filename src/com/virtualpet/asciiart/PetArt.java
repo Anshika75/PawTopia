@@ -24,7 +24,7 @@ public class PetArt {
     // ASCII art for Cat using text block
     private static void printCatArt(String petName) {
         System.out.println("""
-                /\\_/\\\\
+                /\\_/\\
                ( o.o )
                 > ^ <
 
@@ -212,7 +212,7 @@ Chirp! %s is enjoying its food.
                 break;
             case "PLAYING":
                 System.out.println("""
-                       \\    / 
+                       \\  / 
                         (o> 
                       __/\\__/\\
                      ('-o^o-') 
