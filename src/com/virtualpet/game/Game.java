@@ -2,6 +2,7 @@ package com.virtualpet.game;
 
 import java.util.Scanner;
 import com.virtualpet.activity.Activity;
+import com.virtualpet.asciiart.AsciiArt;
 import com.virtualpet.asciiart.PetArt;
 import com.virtualpet.config.VaccinationManager;
 import com.virtualpet.pet.PetType;

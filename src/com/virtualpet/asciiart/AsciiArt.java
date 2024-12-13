@@ -17,12 +17,13 @@ public class AsciiArt {
     public static void printWonArt(){
         String wonArt = """
               *   *   *    *   *
-           *         |     *       *
-              \\      |   /     *
-          *        ----*----      *
-              *    /   |   \\     *
-                   /    |     \\
-             *   YOU WON!  *    *
+           *     \\    |    /    *
+          *       \\   |   /       *
+          * *     ----*----      * *
+              *   /   |   \\     *
+              *  /    |    \\   *
+             *  *  YOU WON!  *  *
+               *  *  *  *  *  *
               """;
 
         System.out.println(wonArt);
