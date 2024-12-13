@@ -3,6 +3,7 @@ package com.virtualpet.config;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.virtualpet.asciiart.AsciiArt;
 import com.virtualpet.game.Game;
 import com.virtualpet.pet.Pet;
 import com.virtualpet.pet.PetType;
@@ -32,6 +33,7 @@ public class GuardianManager {
         pet.setGuardian(true);
         System.out.println("\n" + pet.getName() + " has reached the age limit and is now ascending as a guardian.");
         System.out.println("Congratulations! You won as you were able to take care of your pet till the very end.");
+        AsciiArt.printWonArt();
         endGame();
     }
 

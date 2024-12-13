@@ -13,4 +13,18 @@ public class AsciiArt {
 
         System.out.println(welcomeArt);
     }
+
+    public static void printWonArt(){
+        String wonArt = """
+              *   *   *    *   *
+           *         |     *       *
+              \\      |   /     *
+          *        ----*----      *
+              *    /   |   \\     *
+                   /    |     \\
+             *   YOU WON!  *    *
+              """;
+
+        System.out.println(wonArt);
+    }
 }
